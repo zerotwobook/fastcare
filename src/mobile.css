@@ -1,0 +1,1546 @@
+/* Mobile is the primary app layout through phone landscape and small tablets. */
+:root {
+  --mobile-nav-space: calc(72px + env(safe-area-inset-bottom));
+  --mobile-action-space: 80px;
+}
+.mobile-mode-button,
+.mobile-page-label,
+.mobile-card-status,
+.mobile-protection-filter {
+  display: none;
+}
+.mode-options {
+  display: grid;
+  gap: 14px;
+}
+.mode-options > button {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  text-align: left;
+  padding: 19px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  min-height: 88px;
+}
+.mode-options > button[aria-pressed="true"] {
+  background: #f4f4f4;
+  border-color: #333;
+  box-shadow: inset 0 0 0 1px #333;
+}
+.mode-options > button > span {
+  flex: 1;
+}
+.mode-options strong {
+  display: block;
+  font-size: 15px;
+}
+.mode-options small {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+.maintenance-filter {
+  margin-bottom: 20px;
+  max-width: 460px;
+}
+.call-room .call-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 24px 8px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+.call-room .technician-placeholder {
+  height: auto;
+  position: static;
+  padding: 20px;
+  gap: 14px;
+}
+.call-room .technician-placeholder h2 {
+  font-size: 19px;
+}
+.call-room .technician-placeholder > p {
+  font-size: 12px;
+  margin: 0;
+}
+.call-room .call-timer {
+  top: 16px;
+  left: 16px;
+}
+.call-room .user-video-placeholder {
+  width: 125px;
+  min-height: 110px;
+  bottom: 14px;
+  right: 14px;
+  padding: 12px;
+  font-size: 11px;
+}
+.call-room .call-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px 24px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  flex-shrink: 0;
+}
+.call-room .call-controls .btn {
+  flex-direction: column;
+  gap: 7px;
+  min-height: 68px;
+  padding: 10px 8px;
+  white-space: normal;
+  font-size: 12px;
+}
+.call-disclaimer {
+  text-align: center;
+  color: #777;
+  font-size: 11px;
+  padding: 0 18px 14px;
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  :root {
+    font-size: 15px;
+    --radius: 16px;
+  }
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  summary {
+    touch-action: manipulation;
+  }
+  button:focus-visible,
+  a:focus-visible,
+  summary:focus-visible {
+    outline-offset: 3px;
+  }
+  #main-content {
+    max-width: 680px;
+    padding: 24px 16px 24px;
+    scroll-padding-bottom: calc(var(--mobile-nav-space) + 24px);
+  }
+  .app-body {
+    margin-left: 0;
+    padding-bottom: var(--mobile-nav-space);
+  }
+  .sidebar {
+    width: min(320px, 88vw);
+    padding: 28px 18px 0;
+    transform: translateX(-100%);
+    z-index: 40;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-expanded .nav-item {
+    min-height: 50px;
+    font-size: 15px;
+  }
+  .sidebar-expanded nav .nav-caption {
+    font-size: 11px;
+    margin-top: 22px;
+  }
+  .sidebar .brand {
+    margin-bottom: 28px;
+  }
+  .drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #0005;
+    z-index: 39;
+  }
+  .drawer-close {
+    display: flex;
+    position: absolute;
+    top: 22px;
+    right: 12px;
+  }
+  .mobile-menu {
+    display: flex;
+    margin-left: -6px;
+  }
+  .topbar {
+    height: 64px;
+    padding: 0 max(12px, env(safe-area-inset-left)) 0
+      max(16px, env(safe-area-inset-left));
+    gap: 8px;
+  }
+  .topbar-breadcrumb {
+    flex: 1;
+    min-width: 0;
+    gap: 9px;
+    font-size: 14px;
+  }
+  .topbar-breadcrumb .desktop-page-label,
+  .prototype-label,
+  .breadcrumb-home,
+  .breadcrumb-divider,
+  .top-avatar,
+  .topbar-separator,
+  .topbar .mode-switch {
+    display: none !important;
+  }
+  .topbar-breadcrumb > .mobile-page-label {
+    display: block;
+    max-width: none !important;
+    font-weight: 500;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar-right {
+    flex-shrink: 0;
+    gap: 4px;
+  }
+  .mobile-mode-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 9px 10px;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    background: #fafafa;
+    font-size: 12px;
+  }
+  .notification-button {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+  .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .notification-panel {
+    position: fixed;
+    top: 70px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: 520px;
+    margin-left: auto;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 27px;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  h3 {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .page-head,
+  .care-page > .page-head {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 22px;
+    gap: 17px;
+  }
+  .page-head > div > p:not(.eyebrow) {
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+  .page-head .head-actions {
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+  }
+  .head-actions > .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .head-actions > .badge {
+    flex: none;
+  }
+  .simple-home .page-head {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .simple-home .head-actions {
+    width: auto;
+  }
+  .simple-home .head-actions > .btn {
+    min-width: 148px;
+  }
+  .btn,
+  .page-head .head-actions .btn {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+    line-height: 1.45;
+    white-space: normal;
+  }
+  .text-link {
+    min-height: 44px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 7px 0;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .home-section-links > a {
+    min-height: 44px;
+  }
+  .panel {
+    padding: 21px 18px;
+    border-radius: 15px;
+  }
+  .section-title {
+    gap: 12px;
+    align-items: center;
+  }
+  .section-title h2 {
+    font-size: 17px;
+  }
+  .section-title .btn {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .small {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+  .detail-line {
+    font-size: 13px;
+    padding: 13px 0;
+    gap: 14px;
+    line-height: 1.7;
+  }
+  .detail-line > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .detail-line > strong {
+    max-width: 65%;
+    text-align: right;
+  }
+  .form {
+    gap: 22px;
+  }
+  .form > * {
+    min-width: 0;
+  }
+  .report-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .report-layout > section {
+    min-width: 0;
+  }
+  .upload {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .upload input[type="file"] {
+    width: 100%;
+    min-width: 0;
+    font-size: 12px;
+  }
+  .form label {
+    font-size: 14px;
+    gap: 9px;
+    line-height: 1.5;
+  }
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .form input:not([type="checkbox"]):not([type="file"]):not([type="radio"]),
+  .form select,
+  .form textarea,
+  .search-field input,
+  .filter-bar select,
+  .chat-input input {
+    font-size: 16px;
+    min-height: 50px;
+    width: 100%;
+    min-width: 0;
+    border-radius: 10px;
+    padding: 12px;
+    line-height: 1.4;
+  }
+  .form textarea {
+    min-height: 120px;
+  }
+  .form input[type="date"] {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .form input[type="file"] {
+    font-size: 13px;
+    max-width: 100%;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: #222;
+  }
+  .consent,
+  .reminder-toggle {
+    min-height: 48px;
+    cursor: pointer;
+    gap: 10px;
+    align-items: center;
+  }
+  .consent span {
+    min-width: 0;
+  }
+  .consent input {
+    margin: 0;
+  }
+  .safety {
+    padding: 15px;
+    border-radius: 11px;
+    gap: 11px;
+  }
+  .safety p {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+  .care-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+    gap: 0;
+    margin: 0 0 22px;
+    padding: 0;
+  }
+  .care-tabs > a,
+  .care-tabs > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 52px;
+    padding: 12px 5px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: normal;
+    border-bottom: 2px solid #e4e4e4;
+  }
+  .care-tabs > .active {
+    border-bottom-color: #222;
+  }
+  .appointments-page > .care-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page-sections {
+    gap: 8px;
+    margin: 0 -2px 16px;
+    padding: 0 2px 10px;
+  }
+  .page-sections > a {
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+  main [id] {
+    scroll-margin-top: 82px;
+  }
+  .care-core-services {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .care-core-services > a {
+    padding: 18px;
+    border-radius: 13px;
+    min-height: 88px;
+  }
+  .care-core-services h2 {
+    font-size: 16px;
+  }
+  .care-core-services p {
+    font-size: 12px;
+  }
+  .home-start > h2 {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+  .home-summary {
+    gap: 0 20px;
+    margin-bottom: 18px;
+  }
+  .home-summary a {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .home-columns {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .home-task {
+    padding: 18px 0;
+    gap: 12px;
+  }
+  .home-task h3 {
+    font-size: 14px;
+  }
+  .home-task p {
+    font-size: 12px;
+  }
+  .home-appliance-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .home-appliance-list .appliance-row {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .home-appliance-list .appliance-row:last-child {
+    border: 0;
+  }
+  .home-appliance-list .appliance-row h3 {
+    font-size: 14px;
+  }
+  .home-flood-link strong {
+    font-size: 14px;
+  }
+  .home-flood-link span {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .flood-action-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    padding: 13px;
+    border-radius: 12px;
+  }
+  .flood-action-strip a {
+    font-size: 12px;
+    min-height: 48px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .flood-action-strip a:first-child {
+    grid-column: 1/-1;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .filter-bar > .search-field {
+    width: 100%;
+    flex-basis: 100%;
+    min-width: 0;
+    min-height: 50px;
+  }
+  .filter-bar > select {
+    min-width: 0;
+    max-width: none;
+    flex: 1 1 45%;
+    width: 100%;
+  }
+  .filter-bar .search-field {
+    border-radius: 11px;
+    padding-left: 14px;
+  }
+  .simple-inventory-filters > .small {
+    display: block;
+    font-size: 12px;
+    line-height: 48px;
+  }
+  .filter-options {
+    position: static;
+  }
+  .filter-options > summary {
+    min-height: 48px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .filter-options[open] {
+    width: 100%;
+    order: 3;
+  }
+  .filter-fields {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+  .filter-fields select {
+    width: 100%;
+    max-width: none;
+  }
+  .appliance-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+  .appliance-card {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+    position: relative;
+    padding: 18px 15px;
+    overflow: visible;
+    border-radius: 14px;
+  }
+  .appliance-card .card-visual {
+    position: static;
+    width: 70px;
+    height: 84px;
+    border-radius: 12px;
+  }
+  .appliance-card .card-visual > .badge {
+    display: none;
+  }
+  .appliance-card .card-visual > .appliance-art {
+    width: 70px;
+    height: 76px;
+    margin: 0;
+  }
+  .appliance-card .card-visual > .local-photo {
+    width: 70px;
+    height: 84px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .card-info {
+    padding: 0;
+    min-width: 0;
+  }
+  .mobile-card-status {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .mobile-card-status .badge {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+  .card-info > .eyebrow {
+    font-size: 11px !important;
+    margin-bottom: 5px;
+  }
+  .card-info h2 {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .card-info > p:not(.eyebrow) {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .card-service {
+    font-size: 12px;
+    padding: 0;
+    margin-top: 10px;
+    border: 0;
+    line-height: 1.6;
+  }
+  .card-info > .btn {
+    display: flex;
+    min-height: 44px;
+    width: max-content;
+    max-width: 100%;
+    justify-content: flex-start;
+    border: 0;
+    background: none;
+    padding: 8px 0 0;
+    margin: 0;
+    font-size: 13px;
+  }
+  .card-info > .btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+  }
+  .appliance-card:has(.btn:focus-visible) {
+    outline: 2px solid #444;
+    outline-offset: 3px;
+  }
+  .detail-grid,
+  .service-detail-grid,
+  .preparation-layout,
+  .recovery-v2-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .stack {
+    gap: 18px;
+    min-width: 0;
+  }
+  .large-visual {
+    height: 190px;
+    max-height: 190px;
+  }
+  .appliance-profile .large-visual > .appliance-art {
+    height: 170px;
+  }
+  .profile-info {
+    padding: 21px 18px;
+  }
+  .appliance-profile .detail-line {
+    font-size: 13px;
+  }
+  .disclosure {
+    padding: 0;
+    border-radius: 13px;
+  }
+  .disclosure > summary {
+    padding: 20px 18px;
+    min-height: 64px;
+  }
+  .disclosure > summary strong {
+    font-size: 15px;
+  }
+  .disclosure > summary small {
+    font-size: 12px;
+  }
+  .disclosure-body {
+    padding: 0 18px 20px;
+  }
+  .mobile-protection-filter {
+    display: block;
+    padding: 18px;
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    border-radius: 13px;
+    margin-bottom: 20px;
+  }
+  .care-stats {
+    display: none;
+  }
+  .plan-grid,
+  .my-plans-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .plan-card,
+  .package-card {
+    padding: 23px 19px;
+    border-radius: 15px;
+  }
+  .plan-card h2,
+  .package-card h2 {
+    font-size: 22px;
+  }
+  .plan-price {
+    margin-top: 18px;
+    font-size: 30px;
+  }
+  .plan-flood strong {
+    font-size: 13px;
+  }
+  .plan-card .detail-line {
+    font-size: 13px;
+    padding: 11px 0;
+  }
+  .plan-eligibility,
+  .package-card > .small {
+    font-size: 12px;
+  }
+  .appliance-selector {
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  .appliance-selector > .form {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+  .appliance-selector > div:nth-child(2) {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .appliance-selector .badge {
+    margin: 0;
+  }
+  .appliance-selector > .btn {
+    width: 100%;
+  }
+  .care-table {
+    min-width: 760px;
+  }
+  .care-table th,
+  .care-table td {
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .care-table th:first-child,
+  .care-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #f5f5f5;
+  }
+  .comparison-hint {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 14px;
+    color: #666;
+  }
+  .comparison-actions {
+    flex-direction: column;
+  }
+  .comparison-actions > .btn {
+    width: 100%;
+  }
+  .my-plan-header {
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-bottom: 20px;
+  }
+  .my-plan-header .badge {
+    margin-left: 0;
+  }
+  .my-plan-header h2 {
+    font-size: 16px;
+  }
+  .my-plan-card > .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .my-plan-card > .button-row > .btn {
+    min-width: 0;
+    padding: 11px 9px;
+    font-size: 13px;
+  }
+  .consultation-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .consultation-layout > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .consultation-layout > aside > * {
+    width: 100%;
+  }
+  .channel-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .channel-options > button {
+    min-height: 100px;
+    padding: 15px 5px;
+    border-radius: 12px;
+  }
+  .channel-options h3 {
+    font-size: 13px;
+  }
+  .channel-options p {
+    display: none;
+  }
+  .consultation-profile {
+    display: grid;
+    grid-template-columns: 65px minmax(0, 1fr);
+    gap: 8px 14px;
+  }
+  .consultation-profile > .appliance-art {
+    width: 65px;
+    height: 75px;
+    grid-row: 1 / span 3;
+  }
+  .consultation-profile > .btn {
+    grid-column: 1/-1;
+  }
+  .provider {
+    padding: 16px 13px;
+    min-height: 82px;
+    gap: 12px;
+  }
+  .provider h3 {
+    font-size: 14px;
+  }
+  .provider p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .provider .radio-dot {
+    width: 20px;
+    height: 20px;
+  }
+  .booking-stepper {
+    padding: 12px 10px;
+    gap: 7px;
+    border-radius: 13px;
+  }
+  .booking-stepper > button {
+    flex: 1;
+    min-width: 0;
+    min-height: 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+  .booking-stepper strong {
+    text-align: center;
+    font-size: 11px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .booking-stepper > button > svg {
+    display: none;
+  }
+  .booking-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .booking-layout > aside {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .booking-layout > aside > * {
+    min-width: 0;
+    width: 100%;
+  }
+  .booking-content > h2 {
+    font-size: 22px;
+  }
+  .booking-content > .muted {
+    font-size: 14px;
+  }
+  .selection-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+  }
+  .appliance-option {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 5px 14px;
+    min-height: 98px;
+    padding: 16px 13px;
+    border-radius: 12px;
+    text-align: left;
+  }
+  .appliance-option > .appliance-art {
+    grid-row: 1 / span 2;
+    width: 48px;
+    height: 64px;
+    margin: 0;
+  }
+  .appliance-option strong {
+    font-size: 14px;
+    text-align: left;
+    padding-right: 18px;
+  }
+  .appliance-option p {
+    grid-column: 2;
+    text-align: left;
+    font-size: 12px;
+    margin: 0;
+  }
+  .appliance-option > .radio-dot {
+    width: 20px;
+    height: 20px;
+    top: 13px;
+    right: 12px;
+  }
+  .service-options > button {
+    padding: 18px 14px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+  .service-options h3 {
+    font-size: 15px;
+  }
+  .service-options p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .service-options .service-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .booking-actions {
+    position: fixed;
+    bottom: var(--mobile-nav-space);
+    left: 0;
+    right: 0;
+    z-index: 17;
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    padding: 12px max(16px, env(safe-area-inset-right));
+    min-height: var(--mobile-action-space);
+    border-top: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 -4px 14px #00000004;
+  }
+  .booking-actions > .btn {
+    flex: 1;
+    min-width: 0;
+  }
+  .booking-actions > .btn.primary {
+    flex: 2;
+  }
+  #main-content:has(.booking-layout) {
+    padding-bottom: calc(var(--mobile-action-space) + 24px);
+  }
+  .booking-summary .summary-art {
+    display: none;
+  }
+  .booking-summary .detail-line {
+    font-size: 13px;
+  }
+  .appointment-list-row {
+    padding: 20px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .appointment-list-row > div {
+    flex-basis: calc(100% - 44px);
+  }
+  .appointment-list-row h2 {
+    font-size: 16px;
+  }
+  .appointment-list-row p,
+  .appointment-list-row > div > span {
+    font-size: 13px;
+  }
+  .appointment-list-row > .badge {
+    margin-left: 34px;
+  }
+  .appointment-list-row > svg:last-child {
+    margin-left: auto;
+  }
+  .maintenance-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .maintenance-record {
+    padding: 19px 16px;
+    border-radius: 12px;
+  }
+  .maintenance-record h3 {
+    font-size: 15px;
+  }
+  .maintenance-record .detail-line {
+    font-size: 13px;
+  }
+  .maintenance-record-head p {
+    font-size: 12px;
+  }
+  .reminder-toggle {
+    font-size: 13px;
+  }
+  .repair-record > .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .checklist-row {
+    padding: 20px 0;
+    gap: 12px;
+  }
+  .checklist-row input {
+    margin-top: 3px;
+  }
+  .checklist-row strong {
+    font-size: 14px;
+  }
+  .checklist-row p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .moving-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 100px;
+    gap: 16px 12px;
+    padding: 24px 0;
+  }
+  .moving-appliance {
+    grid-column: 1;
+  }
+  .moving-row > .form:not(.moving-note) {
+    grid-column: 2;
+  }
+  .moving-note {
+    grid-column: 1/-1;
+  }
+  .moving-row .form input:not([type="checkbox"]),
+  .moving-row .form select {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+  .moving-note .consent {
+    font-size: 12px;
+  }
+  .reorder-controls {
+    grid-column: 1/-1;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .moving-appliance h3 {
+    font-size: 14px;
+  }
+  .moving-save > .btn {
+    width: 100%;
+  }
+  .preparation-progress {
+    padding: 18px;
+  }
+  .preparation-progress h2 {
+    font-size: 15px;
+  }
+  .before-after-photos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .compact-photo-gallery {
+    min-width: 0;
+  }
+  .compact-photo-gallery .section-title {
+    display: block;
+    margin-bottom: 12px;
+  }
+  .compact-photo-gallery .section-title > h3 {
+    font-size: 13px;
+  }
+  .compact-photo-gallery .section-title > .text-link {
+    font-size: 11px;
+    min-height: 44px;
+  }
+  .compact-photo-gallery .sample-appliance-image {
+    height: 110px;
+  }
+  .compact-photo-gallery .sample-appliance-image svg {
+    height: 80px;
+  }
+  .compact-photo-gallery .photo-record > img {
+    height: 110px;
+    object-fit: cover;
+  }
+  .compact-photo-gallery .photo-record-caption {
+    padding: 10px;
+    font-size: 11px;
+  }
+  .compact-photo-gallery .photo-record-caption > * {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .compact-photo-gallery .photo-expand {
+    font-size: 11px;
+    text-align: left;
+  }
+  .photo-record {
+    min-width: 0;
+    border-radius: 11px;
+  }
+  .photo-appliance-select {
+    margin-bottom: 20px;
+  }
+  .claim-panel-v2 .button-row {
+    gap: 11px;
+  }
+  .claim-panel-v2 .btn {
+    width: 100%;
+  }
+  .claim-doc h3 {
+    font-size: 13px;
+  }
+  .case-row {
+    gap: 13px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+  .case-row .case-art {
+    width: 64px;
+    height: 70px;
+  }
+  .case-row h2 {
+    font-size: 16px;
+  }
+  .case-next {
+    flex-basis: 100%;
+    margin-left: 77px;
+    text-align: left;
+  }
+  .case-row > .grow {
+    min-width: 0;
+  }
+  .recovery-intro {
+    padding: 18px;
+    gap: 14px;
+  }
+  .recovery-intro h2 {
+    font-size: 16px;
+  }
+  .recovery-explainer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .document-table-row {
+    padding: 20px 0;
+  }
+  .document-name h3 {
+    font-size: 14px;
+  }
+  .document-table-row > .text-link {
+    min-height: 44px;
+  }
+  .document-table-row > .badge {
+    font-size: 11px;
+  }
+  .document-name p,
+  .document-table-row > span {
+    font-size: 12px;
+  }
+  .modal:not(.chat-details-sheet) {
+    inset: auto 0 var(--mobile-keyboard-inset, 0px);
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(var(--mobile-visible-height, 100dvh) - 12px);
+    padding: 0 20px calc(22px + env(safe-area-inset-bottom));
+    border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .modal:not(.chat-details-sheet) > .modal-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: 0 -20px 23px;
+    padding: 22px 20px 18px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  .modal .modal-head h2 {
+    font-size: 20px;
+  }
+  .modal .modal-head p {
+    font-size: 12px;
+  }
+  .modal .modal-head .icon-button {
+    width: 44px;
+    height: 44px;
+  }
+  .modal .modal-actions {
+    position: sticky;
+    bottom: calc(-22px - env(safe-area-inset-bottom));
+    display: flex;
+    gap: 11px;
+    flex-wrap: wrap;
+    margin: 23px -4px 0;
+    padding: 14px 4px 8px;
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  .modal-actions > .btn {
+    flex: 1;
+    min-width: 0;
+    white-space: normal;
+  }
+  .modal form > .btn.primary {
+    width: 100%;
+  }
+  .modal .button-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .modal .button-row > .btn {
+    flex: 1;
+    min-width: 0;
+  }
+  .sample-document {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .footer {
+    margin-top: 28px;
+    gap: 10px;
+    font-size: 11px;
+  }
+  .footer .text-link {
+    font-size: 11px;
+  }
+  .presenter-controls {
+    display: none;
+  }
+  .mobile-bottom-nav {
+    display: grid;
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 18;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: var(--mobile-nav-space);
+    min-height: 0;
+    padding: 8px max(8px, env(safe-area-inset-right))
+      calc(8px + env(safe-area-inset-bottom));
+    background: #fff;
+    border-top: 1px solid #ddd;
+  }
+  .mobile-bottom-nav > a,
+  .mobile-bottom-nav > button {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 4px 0;
+    border-radius: 11px;
+    color: #777;
+    font-size: 11px;
+  }
+  .mobile-bottom-nav [aria-current="page"] {
+    background: #f0f0f0;
+    color: #111;
+    font-weight: 600;
+  }
+  .mobile-bottom-nav > a:nth-child(3) > svg {
+    background: #242424;
+    color: #fff;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+  .mobile-bottom-nav > a:nth-child(3) {
+    gap: 2px;
+  }
+  .toast {
+    bottom: calc(var(--mobile-nav-space) + 14px);
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: 520px;
+    margin: auto;
+    transform: none;
+    border-radius: 12px;
+    font-size: 13px;
+  }
+  html[data-mobile-keyboard="true"] .mobile-bottom-nav,
+  html[data-mobile-keyboard="true"] .booking-actions {
+    display: none;
+  }
+  html[data-mobile-keyboard="true"] .app-body {
+    padding-bottom: 0;
+  }
+  html[data-mobile-keyboard="true"] #main-content {
+    padding-bottom: 24px;
+  }
+  .conversation-active .app-body {
+    left: 0;
+    padding-bottom: var(--mobile-nav-space);
+  }
+  .conversation-active .topbar {
+    flex-basis: 64px;
+  }
+  .conversation-active #main-content {
+    max-width: none;
+    padding: 0;
+  }
+  html.conversation-active[data-chat-keyboard="true"] .app-body {
+    padding-bottom: 0;
+  }
+  html.conversation-active[data-chat-keyboard="true"] .mobile-bottom-nav {
+    display: none;
+  }
+  .chat-details-sheet {
+    bottom: var(--mobile-keyboard-inset, 0px);
+  }
+  .chat-details-button {
+    min-height: 44px;
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+  .chat-message p {
+    font-size: 14px;
+  }
+  .chat-suggestions-trigger {
+    width: 44px;
+    min-width: 44px;
+  }
+  .chat-composer .chat-send {
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+  }
+  .chat-composer textarea {
+    min-height: 48px;
+  }
+  .call-room .call-stage {
+    margin: 14px 16px 5px;
+    border-radius: 17px;
+  }
+  .call-room .technician-placeholder {
+    padding: 16px;
+    gap: 11px;
+  }
+  .call-room .technician-placeholder h2 {
+    font-size: 16px;
+  }
+  .call-room .technician-placeholder > .badge {
+    font-size: 11px;
+  }
+  .call-room .call-controls {
+    padding: 11px 16px;
+    gap: 10px;
+  }
+  .call-room .call-controls .btn {
+    min-height: 68px;
+    padding: 9px 5px;
+    font-size: 12px;
+  }
+  .call-room .user-video-placeholder {
+    width: 105px;
+    min-height: 104px;
+    padding: 10px;
+    bottom: 12px;
+    right: 12px;
+  }
+  .call-room .user-video-placeholder span {
+    font-size: 10px;
+  }
+  .call-disclaimer {
+    font-size: 10px;
+    padding-bottom: 12px;
+  }
+}
+@media (max-width: 900px) and (max-height: 500px) {
+  .call-room {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 175px;
+    grid-template-rows: 64px minmax(0, 1fr);
+  }
+  .call-room > .chat-room-header {
+    grid-column: 1/-1;
+    min-height: 64px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .call-room > .chat-context,
+  .call-room > .call-disclaimer {
+    display: none;
+  }
+  .call-room > .call-stage {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 10px;
+  }
+  .call-room > .call-controls {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px 12px 10px 0;
+    gap: 7px;
+  }
+  .call-room .call-controls .btn {
+    flex-direction: row;
+    min-height: 42px;
+    padding: 7px;
+  }
+  .call-room .technician-placeholder {
+    gap: 6px;
+    padding: 10px;
+  }
+  .call-room .technician-placeholder > svg {
+    width: 34px;
+    height: 34px;
+  }
+  .call-room .technician-placeholder h2 {
+    font-size: 14px;
+  }
+  .call-room .user-video-placeholder {
+    width: 80px;
+    min-height: 68px;
+    bottom: 8px;
+    right: 8px;
+    padding: 6px;
+  }
+  .call-room .user-video-placeholder > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .call-room .user-video-placeholder small {
+    display: none;
+  }
+}
+@media (max-width: 350px) {
+  #main-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .topbar {
+    padding-left: 12px;
+    padding-right: 8px;
+  }
+  .mobile-mode-button {
+    padding: 8px;
+    gap: 4px;
+  }
+  .mobile-mode-button > svg:first-child {
+    display: none;
+  }
+  .care-tabs > a,
+  .care-tabs > button {
+    font-size: 12px;
+  }
+  .appliance-card {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px 12px;
+  }
+  .appliance-card .card-visual,
+  .appliance-card .card-visual > .appliance-art {
+    width: 58px;
+  }
+  .card-info h2 {
+    font-size: 15px;
+  }
+  .my-plan-card > .button-row {
+    grid-template-columns: 1fr;
+  }
+  .before-after-photos {
+    gap: 9px;
+  }
+}
